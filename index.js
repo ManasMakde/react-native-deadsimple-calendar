@@ -6,7 +6,7 @@ import DateContainer from './src/DateContainer';
 import { isEqual } from "lodash";
 
 
-const Calendar = ({
+export default Calendar = memo(({
     MarkedDates = {},
     DaysList = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
     MonthsList = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
@@ -99,10 +99,7 @@ const Calendar = ({
 
     </View>);
 
-}
-
-export default memo(Calendar, isEqual)
-
+}, isEqual)
 
 const DefaultStyles = StyleSheet.create({
     Style: {

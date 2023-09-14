@@ -1,5 +1,7 @@
 # 📅💀 react-native-deadsimple-calendar 
 
+[![Version](https://img.shields.io/npm/v/react-native-deadsimple-calendar.svg)](https://www.npmjs.com/package/react-native-deadsimple-calendar )
+
 Need a simple calendar without having to waste time setting up / optimizing?  
 Then this package is just for you!
 
