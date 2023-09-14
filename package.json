@@ -1,0 +1,29 @@
+{
+  "name": "react-native-deadsimple-calendar",
+  "version": "1.0.0",
+  "description": "A dead simple calendar optimized with memo",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "lodash": "^4.17.21"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ManasMakde/react-native-deadsimple-calendar.git"
+  },
+  "keywords": [
+    "react-native",
+    "calendar",
+    "picker",
+    "date",
+    "day"
+  ],
+  "author": "Manas Makde",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ManasMakde/react-native-deadsimple-calendar/issues"
+  },
+  "homepage": "https://github.com/ManasMakde/react-native-deadsimple-calendar#readme"
+}
