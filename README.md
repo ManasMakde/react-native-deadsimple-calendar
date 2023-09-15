@@ -9,8 +9,10 @@ Then this package is just for you!
 
 or if you prefer the inline strip version:
 
-![Alt text](<images/Inline Example.jpg>)
 
+<img src="images/Inline Example.jpg" alt="drawing" style="width:332px;"/>
+
+<br>
 
 > ***Don't like adding dependencies to your project?***  
 > Feel free to copy paste the code from my github & leave a ⭐
@@ -91,7 +93,7 @@ export default function App() {
 > **Hint 💡**  
 > You can use `OnTitlePress` & `setSelectedMonthYear` to create a custom popup to change the month & year.  
 >
-> ( Check the repo for `/example` )
+> ( Check out [this](https://github.com/ManasMakde/react-native-deadsimple-calendar/blob/main/example/popup.js) example )
 
 ## API
 | **Props**              | **Type** | **Example**                                                                                                                  |
