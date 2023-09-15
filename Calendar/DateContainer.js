@@ -1,8 +1,7 @@
 import React, { memo } from 'react';
 import { StyleSheet, View, Text, Pressable } from 'react-native';
 import { isEqual } from "lodash";
-
-const marker_width = 5
+import { DefaultStyles, marker_width } from './Common';
 
 const DayItem = memo(({
     isToday,
@@ -21,12 +20,12 @@ const DayItem = memo(({
     MarkerStyle
 }) => {
 
-    return (<Pressable style={[DefaultStyles.DayWrapper, DayWrapperStyle]} onPress={() => setSelectedDate(day)}>
+    return (<Pressable style={[Styles.DayWrapper, DayWrapperStyle]} onPress={() => setSelectedDate(day)}>
 
         <View style={[...isSelected ? [DefaultStyles.SelectedWrapper, SelectedWrapperStyle] : [], { justifyContent: 'center', alignItems: "center" }]}>
             <Text
-                style={[DefaultStyles.DayStyle, DayStyle, ,
-                ...weekend ? [DefaultStyles.Weekend, WeekendStyle] : [],
+                style={[Styles.DayStyle, DayStyle, ,
+                ...weekend ? [Styles.Weekend, WeekendStyle] : [],
                 ...isToday ? [DefaultStyles.Today, TodayStyle] : [],
                 ...isSelected ? [DefaultStyles.Selected, SelectedStyle] : []
                 ]}>{day}</Text>
@@ -58,11 +57,12 @@ const DateContainer = ({
     TodayStyle,
     SelectedStyle,
     SelectedWrapperStyle,
-    WeekStyle,
     DayWrapperStyle,
     MarkedDates,
     MarkerWrapperStyle,
-    MarkerStyle
+    MarkerStyle,
+    WeekStyle,
+
 }) => {
 
     const TodaysDate = new Date().setHours(0, 0, 0, 0)
@@ -110,13 +110,13 @@ const DateContainer = ({
 
         }
 
-        weeks_arr.push(<View key={week} style={[WeekStyle, DefaultStyles.Week]}>{days_arr}</View>)
+        weeks_arr.push(<View key={week} style={[WeekStyle, Styles.Week]}>{days_arr}</View>)
     }
 
     days_arr.push(<View key={day} style={{ flex: week * 7 - day - empty_days + 1 }} />)
 
 
-    return (<View style={[DefaultStyles.DateContainer, DayContainerStyle]}>
+    return (<View style={[Styles.DateContainer, DayContainerStyle]}>
         {weeks_arr}
     </View >)
 
@@ -124,7 +124,7 @@ const DateContainer = ({
 
 export default memo(DateContainer, isEqual)
 
-const DefaultStyles = StyleSheet.create({
+const Styles = StyleSheet.create({
     DateContainer: {
     },
     Week: {
@@ -136,9 +136,6 @@ const DefaultStyles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         overflow: "hidden",
-
-        // borderColor: 'black',
-        // borderWidth: 2
     },
     DayStyle: {
         textAlign: 'center',
@@ -147,28 +144,7 @@ const DefaultStyles = StyleSheet.create({
         aspectRatio: 1,
         fontWeight: 'bold',
     },
-    MarkerWrapper: {
-        flexDirection: "row",
-        justifyContent: "space-around",
-        position: "absolute",
-        bottom: 5,
-    },
-    Marker: {
-        height: marker_width,
-        width: marker_width,
-        borderRadius: 50
-    },
     Weekend: {
         color: "darkgray"
     },
-    Today: {
-        color: 'dodgerblue'
-    },
-    Selected: {
-        color: 'white',
-    },
-    SelectedWrapper: {
-        backgroundColor: 'dodgerblue',
-        borderRadius: 50,
-    }
 });

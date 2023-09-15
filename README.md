@@ -7,6 +7,10 @@ Then this package is just for you!
 
 ![Example](images/Example.gif)
 
+or if you prefer the inline strip version:
+
+![Alt text](<images/Inline Example.jpg>)
+
 
 > ***Don't like adding dependencies to your project?***  
 > Feel free to copy paste the code from my github & leave a ⭐
@@ -89,12 +93,13 @@ export default function App() {
 >
 > ( Check the repo for `/example` )
 
-## List of all Props
+## API
 | **Props**              | **Type** | **Example**                                                                                                                  |
 |------------------------|----------|------------------------------------------------------------------------------------------------------------------------------|
 | MarkedDates            | Object   | `{ "2023-00-13": [{ color: "red" }, { color: "green" }] }`                                                                   |
 | DaysList               | Array    | `["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]`                                                                          |
 | MonthsList             | Array    | `["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]` |
+| InlineStrip            | Boolean  | default: `false`                                                                                                             |
 | OnTitlePress           | Function | `()=>{}`                                                                                                                     |
 | OnMonthYearChange      | Function | `(newMonthYear) => {}`                                                                                                       |
 | OnDateChange           | Function | `(newDate) => {}`                                                                                                            |

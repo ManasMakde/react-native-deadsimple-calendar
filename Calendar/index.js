@@ -1,15 +1,18 @@
 import React, { memo, useEffect, useState } from 'react';
 import { StyleSheet, View } from 'react-native';
-import Header from './src/Header';
-import WeekItems from './src/WeekItems';
-import DateContainer from './src/DateContainer';
+import Header from './Header';
+import WeekItems from './WeekItems';
+import DateContainer from './DateContainer';
 import { isEqual } from "lodash";
+import InlineDateContainer from './InlineDateContainer';
 
 
 export default Calendar = memo(({
     MarkedDates = {},
     DaysList = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
     MonthsList = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+
+    InlineStrip = false,
 
     OnTitlePress = () => { },
     OnMonthYearChange = () => { },
@@ -29,6 +32,8 @@ export default Calendar = memo(({
     WeekItemstyle,
     DayContainerStyle,
     DayStyle,
+    TodayStyle,
+    SelectedStyle,
     WeekendStyle,
     WeekStyle,
     DayWrapperStyle,
@@ -48,7 +53,7 @@ export default Calendar = memo(({
         [selectedMonthYear, setSelectedMonthYear] = useState({ "month": currentDate.getMonth(), "year": currentDate.getFullYear() })
 
     if (selectedDate == undefined || setSelectedDate == undefined)
-        [selectedDate, setSelectedDate] = useState(1)
+        [selectedDate, setSelectedDate] = useState(currentDate.getDate())
 
     useEffect(() => {
         OnMonthYearChange(selectedMonthYear)
@@ -62,40 +67,53 @@ export default Calendar = memo(({
         })
     }, [selectedDate])
 
+    const Container = InlineStrip ? InlineDateContainer : DateContainer
 
     return (<View style={[DefaultStyles.Style, style]}>
         <CustomHeader
-            CustomTitle={CustomTitle}
+            {...{
+                selectedMonthYear,
+                setSelectedMonthYear,
+                setSelectedDate,
 
-            CustomRightArrow={CustomRightArrow}
-            RightArrowWrapperStyle={RightArrowWrapperStyle}
-            RightArrowStyle={RightArrowStyle}
+                CustomTitle,
+                CustomRightArrow,
+                CustomLeftArrow,
 
-            CustomLeftArrow={CustomLeftArrow}
-            LeftArrowWrapperStyle={LeftArrowWrapperStyle}
-            LeftArrowStyle={LeftArrowStyle}
+                RightArrowWrapperStyle,
+                RightArrowStyle,
+                LeftArrowWrapperStyle,
+                LeftArrowStyle,
+                HeaderStyle,
+                TitleStyle,
 
-            selectedMonthYear={selectedMonthYear}
-            setSelectedMonthYear={setSelectedMonthYear}
-
-            setSelectedDate={setSelectedDate}
-
-            MonthsList={MonthsList}
-            OnTitlePress={OnTitlePress}
-
-            HeaderStyle={HeaderStyle}
-            TitleStyle={TitleStyle}
-
+                MonthsList,
+                OnTitlePress
+            }}
         />
 
-        <WeekItems
-            {...{
-                DaysList,
-                WeekItemsWrapperStyle,
-                WeekItemstyle
-            }} />
+        {
+            !InlineStrip && <WeekItems {...{ DaysList, WeekItemsWrapperStyle, WeekItemstyle }} />
+        }
 
-        <DateContainer {...{ selectedMonthYear, DayContainerStyle, DayStyle, WeekendStyle, selectedDate, setSelectedDate, WeekStyle, DayWrapperStyle, SelectedWrapperStyle, MarkedDates, MarkerWrapperStyle, MarkerStyle }} />
+        <Container {...{
+            DaysList,
+            selectedMonthYear,
+            selectedDate,
+            setSelectedDate,
+            DayContainerStyle,
+            DayStyle,
+            WeekendStyle,
+            TodayStyle,
+            SelectedStyle,
+            SelectedWrapperStyle,
+            DayWrapperStyle,
+            MarkedDates,
+            MarkerWrapperStyle,
+            MarkerStyle,
+            WeekStyle,
+        }} />
+
 
     </View>);
 
