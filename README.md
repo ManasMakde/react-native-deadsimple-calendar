@@ -9,8 +9,7 @@ Then this package is just for you!
 
 or if you prefer the inline strip version:
 
-
-<img src="images/Inline Example.jpg" alt="drawing" style="width:332px;"/>
+![Alt text](<images/InlineStripExample.gif>)
 
 <br>
 

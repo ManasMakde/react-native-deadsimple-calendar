@@ -1,6 +1,6 @@
 {
   "name": "react-native-deadsimple-calendar",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "A dead simple calendar optimized with memo",
   "main": "Calendar/index",
   "scripts": {
@@ -14,11 +14,17 @@
     "url": "git+https://github.com/ManasMakde/react-native-deadsimple-calendar.git"
   },
   "keywords": [
+    "RN",
     "react-native",
     "calendar",
     "picker",
     "date",
-    "day"
+    "day",
+    "calendar-strip",
+    "calendar strip",
+    "inline",
+    "strip",
+    "inline strip"
   ],
   "author": "Manas Makde",
   "license": "MIT",
