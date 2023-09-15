@@ -41,6 +41,23 @@ export default function App() {
 
 ```
 
+Minimal Inline Strip:
+```js
+import React from 'react';
+import { View } from 'react-native';
+import Calendar from 'react-native-deadsimple-calendar';
+
+export default function App() {
+  return (<View>
+
+      <Calendar
+        InlineStrip={true}
+      />
+
+    </View>);
+}
+
+```
 
 Customizing:
 
@@ -95,37 +112,39 @@ export default function App() {
 > ( Check out [this](https://github.com/ManasMakde/react-native-deadsimple-calendar/blob/main/example/popup.js) example )
 
 ## API
-| **Props**              | **Type** | **Example**                                                                                                                  |
-|------------------------|----------|------------------------------------------------------------------------------------------------------------------------------|
-| MarkedDates            | Object   | `{ "2023-00-13": [{ color: "red" }, { color: "green" }] }`                                                                   |
-| DaysList               | Array    | `["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]`                                                                          |
-| MonthsList             | Array    | `["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]` |
-| InlineStrip            | Boolean  | default: `false`                                                                                                             |
-| OnTitlePress           | Function | `()=>{}`                                                                                                                     |
-| OnMonthYearChange      | Function | `(newMonthYear) => {}`                                                                                                       |
-| OnDateChange           | Function | `(newDate) => {}`                                                                                                            |
-| selectedMonthYear      | useState |                                                                                                                              |
-| setSelectedMonthYear   | useState |                                                                                                                              |
-| selectedDate           | useState |                                                                                                                              |
-| setSelectedDate        | useState |                                                                                                                              |
-| style                  | Object   |                                                                                                                              |
-| HeaderStyle            | Object   |                                                                                                                              |
-| TitleStyle             | Object   |                                                                                                                              |
-| RightArrowWrapperStyle | Object   |                                                                                                                              |
-| RightArrowStyle        | Object   |                                                                                                                              |
-| LeftArrowWrapperStyle  | Object   |                                                                                                                              |
-| LeftArrowStyle         | Object   |                                                                                                                              |
-| WeekItemsWrapperStyle  | Object   |                                                                                                                              |
-| WeekItemstyle          | Object   |                                                                                                                              |
-| DayContainerStyle      | Object   |                                                                                                                              |
-| DayStyle               | Object   |                                                                                                                              |
-| WeekendStyle           | Object   |                                                                                                                              |
-| WeekStyle              | Object   |                                                                                                                              |
-| DayWrapperStyle        | Object   |                                                                                                                              |
-| SelectedWrapperStyle   | Object   |                                                                                                                              |
-| MarkerWrapperStyle     | Object   |                                                                                                                              |
-| MarkerStyle            | Object   |                                                                                                                              |
-| CustomTitle            | Object   |                                                                                                                              |
-| CustomRightArrow       | Object   |                                                                                                                              |
-| CustomLeftArrow        | Object   |                                                                                                                              |
-| CustomHeader           | Object   |                                                                                                                              |
+| **Props**              | **Type**  | **Example**                                                                                                                           |
+|------------------------|-----------|---------------------------------------------------------------------------------------------------------------------------------------|
+| MarkedDates            | Object    | `{ "2023-00-13": [{ color: "red" }, { color: "green" }] }`                                                                            |
+| DaysList               | Array     | Default: `["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]`                                                                          |
+| MonthsList             | Array     | Default: `["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]` |
+| InlineStrip            | Boolean   | Default: `false`                                                                                                                      |
+| OnTitlePress           | Function  | `()=>{}`                                                                                                                              |
+| OnMonthYearChange      | Function  | `(newMonthYear) => {}`                                                                                                                |
+| OnDateChange           | Function  | `(newDate) => {}`                                                                                                                     |
+| selectedMonthYear      | useState  |                                                                                                                                       |
+| setSelectedMonthYear   | useState  |                                                                                                                                       |
+| selectedDate           | useState  |                                                                                                                                       |
+| setSelectedDate        | useState  |                                                                                                                                       |
+| CustomTitle            | Component |                                                                                                                                       |
+| CustomRightArrow       | Component |                                                                                                                                       |
+| CustomLeftArrow        | Component |                                                                                                                                       |
+| CustomHeader           | Component |                                                                                                                                       |
+| style                  | Object    |                                                                                                                                       |
+| HeaderStyle            | Object    |                                                                                                                                       |
+| TitleStyle             | Object    |                                                                                                                                       |
+| RightArrowWrapperStyle | Object    |                                                                                                                                       |
+| RightArrowStyle        | Object    |                                                                                                                                       |
+| LeftArrowWrapperStyle  | Object    |                                                                                                                                       |
+| LeftArrowStyle         | Object    |                                                                                                                                       |
+| WeekItemsWrapperStyle  | Object    |                                                                                                                                       |
+| WeekItemstyle          | Object    |                                                                                                                                       |
+| DayContainerStyle      | Object    |                                                                                                                                       |
+| DayStyle               | Object    |                                                                                                                                       |
+| TodayStyle             | Object    |                                                                                                                                       |
+| SelectedStyle          | Object    |                                                                                                                                       |
+| WeekendStyle           | Object    |                                                                                                                                       |
+| WeekStyle              | Object    |                                                                                                                                       |
+| DayWrapperStyle        | Object    |                                                                                                                                       |
+| SelectedWrapperStyle   | Object    |                                                                                                                                       |
+| MarkerWrapperStyle     | Object    |                                                                                                                                       |
+| MarkerStyle            | Object    |                                                                                                                                       |
