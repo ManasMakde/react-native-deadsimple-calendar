@@ -115,7 +115,7 @@ export default function App() {
 | OnTitlePress           | Function  | `()=>{}`                                                                                                                              |
 | OnMonthYearChange      | Function  | `(newMonthYear) => {}`                                                                                                                |
 | OnDateChange           | Function  | `(newDate) => {}`                                                                                                                     |
-| ref                    | useRef    | `ref.current.setDate()` <br><br> `ref.current.getDate()`                                                                              |
+| ref                    | useRef    | `ref.current.setDate(date, month, year)` <br><br> `ref.current.getDate()`                                                                              |
 | CustomTitle            | Component |                                                                                                                                       |
 | CustomRightArrow       | Component |                                                                                                                                       |
 | CustomLeftArrow        | Component |                                                                                                                                       |
