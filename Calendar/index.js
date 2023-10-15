@@ -1,4 +1,4 @@
-import React, { memo, useEffect, useState } from 'react';
+import React, { forwardRef, memo, useEffect, useImperativeHandle, useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 import Header from './Header';
 import WeekItems from './WeekItems';
@@ -7,7 +7,7 @@ import { isEqual } from "lodash";
 import InlineDateContainer from './InlineDateContainer';
 
 
-export default Calendar = memo(({
+const Calendar = forwardRef(({
     MarkedDates = {},
     DaysList = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
     MonthsList = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
@@ -16,10 +16,7 @@ export default Calendar = memo(({
 
     OnTitlePress = () => { },
     OnMonthYearChange = () => { },
-    OnDateChange = () => { },
-
-    selectedMonthYear, setSelectedMonthYear,
-    selectedDate, setSelectedDate,
+    OnDatePressed = () => { },
 
     style,
     HeaderStyle,
@@ -45,22 +42,37 @@ export default Calendar = memo(({
     CustomRightArrow,
     CustomLeftArrow,
     CustomHeader = Header,
-}) => {
+}, ref) => {
 
     const currentDate = new Date()
+    const [selectedMonthYear, setSelectedMonthYear] = useState({ "month": currentDate.getMonth(), "year": currentDate.getFullYear() })
+    const [selectedDate, setSelectedDate] = useState(currentDate.getDate())
 
-    if (selectedMonthYear == undefined || setSelectedMonthYear == undefined)
-        [selectedMonthYear, setSelectedMonthYear] = useState({ "month": currentDate.getMonth(), "year": currentDate.getFullYear() })
+    useImperativeHandle(ref, () => ({
+        setDate(date, month, year) {
+            setSelectedMonthYear({
+                "month": month ?? selectedMonthYear.month,
+                "year": year ?? selectedMonthYear.year,
+            })
 
-    if (selectedDate == undefined || setSelectedDate == undefined)
-        [selectedDate, setSelectedDate] = useState(currentDate.getDate())
+            setSelectedDate(date ?? selectedDate)
+        },
+
+        getDate() {
+            return {
+                "date": selectedDate,
+                "month": selectedMonthYear.month,
+                "year": selectedMonthYear.year,
+            }
+        }
+    }), [selectedMonthYear, selectedDate])
 
     useEffect(() => {
         OnMonthYearChange(selectedMonthYear)
     }, [selectedMonthYear])
 
     useEffect(() => {
-        OnDateChange({
+        OnDatePressed({
             date: selectedDate,
             month: selectedMonthYear.month,
             year: selectedMonthYear.year,
@@ -117,7 +129,7 @@ export default Calendar = memo(({
 
     </View>);
 
-}, isEqual)
+})
 
 const DefaultStyles = StyleSheet.create({
     Style: {
@@ -132,3 +144,5 @@ const DefaultStyles = StyleSheet.create({
         fontWeight: 'bold'
     }
 });
+
+export default memo(Calendar, isEqual)

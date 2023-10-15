@@ -67,24 +67,17 @@ const MyHeader=()=>(<View>...</View>)
 
 export default function App() {
 
-  const currentDate = new Date()
-  const [myDate, setMyDate] = useState(currentDate.getDate())
-  const [myMonthYear, setMyMonthYear] = useState({ "month": currentDate.getMonth(), "year": currentDate.getFullYear() })
-
+  const calendarRef = useRef()
 
   return (<>
 
     <Button title='Change the date' onPress={() => {
-      setMyDate(10)
-      setMyMonthYear(val => ({ ...val, "month": 2 }))
+      calendarRef.current.setDate(13, 2, 2003)
     }} />
 
     <Calendar
 
-      selectedDate={myDate}
-      setSelectedDate={setMyDate}
-      selectedMonthYear={myMonthYear}
-      setSelectedMonthYear={setMyMonthYear}
+      ref={calendarRef}
 
       style={{
         borderWidth: 3,
@@ -107,11 +100,12 @@ export default function App() {
 ```
 
 > **Hint 💡**  
-> You can use `OnTitlePress` & `setSelectedMonthYear` to create a custom popup to change the month & year.  
+> You can use `OnTitlePress` to create a custom popup to change the month & year.  
 >
 > ( Check out [this](https://github.com/ManasMakde/react-native-deadsimple-calendar/blob/main/example/popup.js) example )
 
 ## API
+
 | **Props**              | **Type**  | **Example**                                                                                                                           |
 |------------------------|-----------|---------------------------------------------------------------------------------------------------------------------------------------|
 | MarkedDates            | Object    | `{ "2023-00-13": [{ color: "red" }, { color: "green" }] }`                                                                            |
@@ -121,10 +115,7 @@ export default function App() {
 | OnTitlePress           | Function  | `()=>{}`                                                                                                                              |
 | OnMonthYearChange      | Function  | `(newMonthYear) => {}`                                                                                                                |
 | OnDateChange           | Function  | `(newDate) => {}`                                                                                                                     |
-| selectedMonthYear      | useState  |                                                                                                                                       |
-| setSelectedMonthYear   | useState  |                                                                                                                                       |
-| selectedDate           | useState  |                                                                                                                                       |
-| setSelectedDate        | useState  |                                                                                                                                       |
+| ref                    | useRef    | `ref.current.setDate()` <br><br> `ref.current.getDate()`                                                                              |
 | CustomTitle            | Component |                                                                                                                                       |
 | CustomRightArrow       | Component |                                                                                                                                       |
 | CustomLeftArrow        | Component |                                                                                                                                       |
@@ -148,3 +139,9 @@ export default function App() {
 | SelectedWrapperStyle   | Object    |                                                                                                                                       |
 | MarkerWrapperStyle     | Object    |                                                                                                                                       |
 | MarkerStyle            | Object    |                                                                                                                                       |
+
+
+
+## Feedback / Bug report
+If you find any bugs or want to leave a feedback, my email is on my github bio  
+Always open to constructive criticism 😁
