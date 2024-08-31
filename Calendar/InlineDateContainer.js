@@ -8,7 +8,7 @@ const InlineDayItem = memo(({ isToday, isSelected, day, DayName, DayStyle, Weeke
     return (<Pressable style={[Styles.DayWrapper, DayWrapperStyle]} onPress={() => setSelectedDate(day)}>
         <Text style={{ marginVertical: 4, color: "gray", fontWeight: (isWeekend ? "bold" : "normal") }}>{DayName}</Text>
 
-        <View style={[...isSelected ? [DefaultStyles.SelectedWrapper, SelectedWrapperStyle] : [], { justifyContent: 'center', alignItems: "center", marginHorizontal: 5 }]}>
+        <View style={[...isSelected ? [DefaultStyles.SelectedWrapper, SelectedWrapperStyle] : [], Styles.DayTextWrapper ]}>
             <Text
                 style={[Styles.DayStyle, DayStyle,
                 ...isWeekend ? [Styles.Weekend, WeekendStyle] : [],
@@ -115,11 +115,15 @@ const Styles = StyleSheet.create({
     DayWrapper: {
         alignItems: "center"
     },
-    DayStyle: {
-        textAlign: 'center',
-        textAlignVertical: 'center',
+    DayTextWrapper: {
         height: 40,
         aspectRatio: 1,
+        justifyContent: 'center',
+        alignItems: "center",
+        marginHorizontal: 5
+    },
+    DayStyle: {
+        color:'black',
         fontWeight: 'bold',
     },
     Weekend: {

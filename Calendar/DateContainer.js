@@ -22,9 +22,9 @@ const DayItem = memo(({
 
     return (<Pressable style={[Styles.DayWrapper, DayWrapperStyle]} onPress={() => setSelectedDate(day)}>
 
-        <View style={[...isSelected ? [DefaultStyles.SelectedWrapper, SelectedWrapperStyle] : [], { justifyContent: 'center', alignItems: "center" }]}>
+        <View style={[Styles.DayTextWrapper, ...isSelected ? [DefaultStyles.SelectedWrapper, SelectedWrapperStyle] : [] ]}>
             <Text
-                style={[Styles.DayStyle, DayStyle, ,
+                style={[Styles.DayStyle, DayStyle,
                 ...weekend ? [Styles.Weekend, WeekendStyle] : [],
                 ...isToday ? [DefaultStyles.Today, TodayStyle] : [],
                 ...isSelected ? [DefaultStyles.Selected, SelectedStyle] : []
@@ -137,11 +137,14 @@ const Styles = StyleSheet.create({
         alignItems: 'center',
         overflow: "hidden",
     },
-    DayStyle: {
-        textAlign: 'center',
-        textAlignVertical: 'center',
+    DayTextWrapper: {
         width: "80%",
         aspectRatio: 1,
+        justifyContent: 'center',
+        alignItems: "center" 
+    },
+    DayStyle: {
+        color:'black',
         fontWeight: 'bold',
     },
     Weekend: {
